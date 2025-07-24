@@ -10,8 +10,11 @@ pipeline {
         stage('Cloning Git') {
             steps {
                 checkout([$class: 'GitSCM',
-                    branches: [[name: '*/main']],
-                    userRemoteConfigs: [[url: 'https://github.com/paolo21-source/formazione_sou_k8s']]
+                    branches: [[name: '*/main']], // o master se serve
+                    userRemoteConfigs: [[
+                        url: 'https://github.com/paolo21-source/formazione_sou_k8s'
+                        //,credentialsId: 'tuo-git-credentials-id'  // se privato
+                    ]]
                 ])
             }
         }
